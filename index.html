@@ -273,6 +273,7 @@
 
   /* ---------- 7 · revenue ---------- */
   .earn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; width: min(880px, 100%); }
+  .earn-card:nth-child(5) { grid-column: 1 / -1; max-width: calc(50% - 9px); justify-self: center; }
   .earn-card {
     display: flex;
     align-items: center;
@@ -565,7 +566,7 @@
       <section id="revenue" class="slide" aria-label="How it earns">
         <div class="frame">
           <p class="kicker reveal">How it earns</p>
-          <h2 class="headline reveal">One endpoint, four revenue streams</h2>
+          <h2 class="headline reveal">One endpoint, five revenue streams</h2>
           <div class="content"><div class="fit">
             <div>
               <div class="earn-grid">
@@ -584,6 +585,10 @@
                 <div class="earn-card reveal">
                   <svg viewBox="0 0 24 24"><path d="M3 10a2 2 0 0 0 0 4v4h18v-4a2 2 0 0 1 0-4V6H3z"/><path d="M13.5 6v2M13.5 11v2M13.5 16v2"/></svg>
                   <div><div class="t">Takeovers + events</div><div class="d">Full-unit brand moments, premium pricing</div></div>
+                </div>
+                <div class="earn-card reveal">
+                  <svg viewBox="0 0 24 24"><rect x="2.5" y="3.5" width="19" height="12" rx="2"/><path d="M8 21h8M12 15.5v5.5"/><path d="M6.5 8h11M6.5 11h7"/></svg>
+                  <div><div class="t">DOOH Media</div><div class="d">Large-format digital inventory across the network</div></div>
                 </div>
               </div>
               <p class="earn-foot reveal">Every brand on the network is a <strong>merchant and an advertiser</strong> at once.</p>
