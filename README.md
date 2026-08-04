@@ -1,6 +1,6 @@
 # Bright.Blue × Pod Foods
 
-Building the Future of Connected Retail — an 11-slide presentation built in the
+Building the Future of Connected Retail — a 14-slide presentation built in the
 Bright.Blue deck style (near-black stage, blue-to-cyan gradient accents, Nunito
 headings on DM Sans body copy).
 
@@ -18,7 +18,7 @@ Open **http://localhost:5173**
 - **→ / Space** — next slide
 - **←** — previous slide
 - **Swipe** — next / previous on touch devices
-- **`?slide=N`** — jump to slide N (1–11); the URL tracks the current slide
+- **`?slide=N`** — jump to slide N (1–14); the URL tracks the current slide
 - **`?clean`** — hide the on-screen nav and render slides already settled, for
   screenshots and PDF export
 
@@ -27,16 +27,26 @@ Open **http://localhost:5173**
 | # | Slide |
 |---|---|
 | 1 | Cover — Building the Future of Connected Retail |
-| 2 | Traditional Retail makes sales / Connected Retail builds relationships |
-| 3 | The brand journey doesn't end at retail |
-| 4 | The Connected Retail Platform |
-| 5 | One platform. Three retail formats. |
-| 6 | Connected Retail Intelligence |
-| 7 | One payment infrastructure. Every transaction. |
-| 8 | Every interaction creates multiple revenue streams |
-| 9 | Why this matters for Pod Foods |
-| 10 | The opportunity |
-| 11 | Close |
+| 2 | Consumer expectations have fundamentally changed |
+| 3 | Today's retail is fragmented |
+| 4 | Imagine if everything worked together |
+| 5 | The brand journey doesn't end at retail |
+| 6 | Europa — full-height screen-fronted units |
+| 7 | Hyperion — large-format travel and flagship |
+| 8 | Blinx — premium glass-locker display |
+| 9 | Connected Retail Intelligence (live dashboard) |
+| 10 | One payment infrastructure. Every transaction. |
+| 11 | Every interaction creates multiple revenue streams |
+| 12 | Why this matters for Pod Foods |
+| 13 | The opportunity |
+| 14 | Close |
+
+### Machine pages
+
+Each format page (6–8) is a photo collage defined by the `MACHINES` array in
+`machines.tsx`. A tile takes a still by default; for footage, drop an mp4 into
+`Public/machines/` and set `kind: 'video'` on the tile — it plays muted on loop
+in place, no other changes needed.
 
 ## Screenshots
 
@@ -62,7 +72,9 @@ Output goes to `dist/` — deploy that folder to any static host.
 
 ```
 ├── main.tsx           # Slide player (keyboard, swipe, deep links)
-├── slides.tsx         # All 11 slides
+├── slides.tsx         # Narrative slides
+├── opening.tsx        # Opening act carried over from the keynote
+├── machines.tsx       # One page per retail format (Europa, Hyperion, Blinx)
 ├── common.tsx         # Brand logo, hero carousel, footer, shared styles
 ├── src/               # Theme tokens + slide primitives
 ├── Public/            # Images and brand assets (Vite publicDir)

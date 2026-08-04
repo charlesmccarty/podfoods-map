@@ -2,8 +2,8 @@ import type { CSSProperties, ReactNode } from 'react'
 import { motion } from 'framer-motion'
 import type { LucideIcon } from 'lucide-react'
 import {
-  Tag, Store, User, Users, Factory, Truck, ShoppingCart, Megaphone, UserPlus,
-  Database, RefreshCw, Heart, CreditCard, BarChart3, ShieldCheck, Zap, Banknote,
+  Tag, Store, Users, Factory, Truck, ShoppingCart, Megaphone, UserPlus,
+  Database, RefreshCw, Heart, BarChart3, ShieldCheck, Zap, Banknote,
   FileCheck2, MonitorSmartphone, PackageCheck, MoreHorizontal, Warehouse, Target,
   TrendingUp, LineChart, PoundSterling, Check, X, ShoppingBag, SlidersHorizontal,
   Gauge,
@@ -13,6 +13,7 @@ import { Eyebrow, GradientText, GradientRule, IconChip } from './src/components/
 import { riseIn, fadeIn, scaleIn } from './src/components/anim'
 import { colors, font, gradient, radius } from './src/theme'
 import { BrandLogo, BrandSymbol, Footer, HeroPhotoCarousel, Closer, halo, h2Style, coverVeil } from './common'
+import { LiveDashboard } from './dashboard'
 
 /* ══════════════════════════════════════════════════ shared slide primitives */
 
@@ -22,41 +23,7 @@ const cardBase: CSSProperties = {
   borderRadius: radius.lg,
 }
 
-/** Round node used in the flow diagrams — muted by default, gradient when live. */
-function Node({ icon: Icon, label, live = false, size = 104 }: { icon: LucideIcon; label: ReactNode; live?: boolean; size?: number }) {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, width: size + 60 }}>
-      <div
-        style={{
-          width: size, height: size, borderRadius: 999, flexShrink: 0,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          background: live ? gradient.primary : colors.surfaceStrong,
-          border: live ? 'none' : `1px solid ${colors.border}`,
-          color: live ? '#fff' : colors.textMuted,
-          boxShadow: live ? '0 0 44px rgba(24,62,246,0.4)' : 'none',
-        }}
-      >
-        <Icon size={size * 0.4} strokeWidth={2} />
-      </div>
-      <span style={{ fontFamily: font.body, fontSize: 18, fontWeight: 700, letterSpacing: 2.4, textTransform: 'uppercase', color: live ? colors.text : colors.textFaint, textAlign: 'center', lineHeight: 1.3 }}>
-        {label}
-      </span>
-    </div>
-  )
-}
-
-/** Horizontal connector with an arrowhead, used between flow nodes. */
-function Arrow({ live = false, width = 78 }: { live?: boolean; width?: number }) {
-  const c = live ? colors.cyan : colors.textFaint
-  return (
-    <svg width={width} height={16} viewBox={`0 0 ${width} 16`} style={{ flexShrink: 0, marginBottom: 44 }} aria-hidden="true">
-      <line x1="0" y1="8" x2={width - 10} y2="8" stroke={c} strokeWidth="2" strokeLinecap="round" opacity={live ? 0.9 : 0.5} />
-      <path d={`M${width - 14} 2.5 L${width - 4} 8 L${width - 14} 13.5`} fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity={live ? 0.9 : 0.5} />
-    </svg>
-  )
-}
-
-/* ══════════════════════════════════════════════════════════════ 1 · Cover */
+/* ══════════════════════════════════════════════════════════════════ Cover */
 
 export function Cover() {
   return (
@@ -88,80 +55,7 @@ export function Cover() {
   )
 }
 
-/* ═════════════════════════════════════════════════════════════ 2 · Thesis */
-
-export function Thesis() {
-  return (
-    <Slide>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1px 1fr', columnGap: 90, flex: 1, alignItems: 'center' }}>
-        {/* Traditional */}
-        <div>
-          <motion.h2 variants={riseIn} style={{ fontFamily: font.heading, fontWeight: 800, fontSize: 76, lineHeight: 1.04, letterSpacing: -1.6, color: colors.textMuted }}>
-            Traditional<br />Retail
-          </motion.h2>
-          <motion.p variants={riseIn} style={{ fontFamily: font.heading, fontWeight: 700, fontSize: 40, color: colors.textFaint, marginTop: 18 }}>
-            makes <span style={{ color: colors.text }}>sales.</span>
-          </motion.p>
-
-          <motion.div variants={riseIn} style={{ display: 'flex', alignItems: 'flex-start', marginTop: 78 }}>
-            <Node icon={Tag} label="Brand" />
-            <Arrow />
-            <div style={{ position: 'relative' }}>
-              <Node icon={Store} label="Retailer" />
-              <div style={{ position: 'absolute', top: 190, left: '50%', transform: 'translateX(-50%)', width: 210, textAlign: 'center' }}>
-                <div style={{ width: 1, height: 34, background: colors.borderStrong, margin: '0 auto 12px' }} />
-                <div style={{ fontSize: 20, color: colors.textFaint, lineHeight: 1.4 }}>Customer data<br />stays here</div>
-              </div>
-            </div>
-            <Arrow />
-            <Node icon={User} label="Customer" />
-          </motion.div>
-        </div>
-
-        <div style={{ alignSelf: 'stretch', background: colors.border }} />
-
-        {/* Connected */}
-        <div>
-          <motion.h2 variants={riseIn} style={{ fontFamily: font.heading, fontWeight: 800, fontSize: 76, lineHeight: 1.04, letterSpacing: -1.6 }}>
-            <GradientText>Connected<br />Retail</GradientText>
-          </motion.h2>
-          <motion.p variants={riseIn} style={{ fontFamily: font.heading, fontWeight: 700, fontSize: 40, color: colors.textMuted, marginTop: 18 }}>
-            builds <span style={{ color: colors.text }}>relationships.</span>
-          </motion.p>
-
-          <motion.div variants={riseIn} style={{ display: 'flex', alignItems: 'flex-start', marginTop: 78 }}>
-            <Node icon={Tag} label="Brand" live />
-            <Arrow live />
-            <div style={{ position: 'relative' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, width: 164 }}>
-                <div style={{ position: 'relative', width: 104, height: 104, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <div style={halo(230, 0.34)} />
-                  <BrandSymbol style={{ height: 104, position: 'relative', filter: 'drop-shadow(0 0 34px rgba(24,62,246,.75))' }} />
-                </div>
-                <span style={{ fontFamily: font.body, fontSize: 18, fontWeight: 700, letterSpacing: 2.4, textTransform: 'uppercase', color: colors.text, textAlign: 'center', lineHeight: 1.3 }}>
-                  Bright.Blue<br />Platform
-                </span>
-              </div>
-              <div style={{ position: 'absolute', top: 196, left: '50%', transform: 'translateX(-50%)', width: 260, textAlign: 'center' }}>
-                <div style={{ width: 1, height: 30, background: colors.cyan, opacity: 0.6, margin: '0 auto 12px' }} />
-                <div style={{ fontSize: 20, fontWeight: 700, color: colors.cyan, lineHeight: 1.4 }}>Real-time intelligence</div>
-              </div>
-            </div>
-            <Arrow live />
-            <Node icon={User} label="Customer" live />
-          </motion.div>
-        </div>
-      </div>
-
-      <motion.p variants={riseIn} style={{ fontFamily: font.heading, fontWeight: 700, fontSize: 34, textAlign: 'center', color: colors.textMuted, marginTop: 40 }}>
-        Traditional retail ends with a sale. Connected retail <GradientText style={{ fontWeight: 800 }}>begins</GradientText> with one.
-      </motion.p>
-      <Footer />
-    </Slide>
-  )
-}
-
-/* ════════════════════════════════════════════════════════════ 3 · Journey */
+/* ════════════════════════════════════════════════════════════════ Journey */
 
 const JOURNEY = [
   { icon: Factory, label: 'Manufacturing', live: false },
@@ -243,171 +137,19 @@ export function Journey() {
   )
 }
 
-/* ═══════════════════════════════════════════════════════════ 4 · Platform */
-
-const PLATFORM = [
-  { icon: ShoppingCart, title: 'Commerce', desc: 'Physical retail, endless aisle, subscriptions, click & collect and home delivery.' },
-  { icon: Megaphone, title: 'Retail Media', desc: 'Sponsored placements, featured products, digital out-of-home advertising and brand activations.' },
-  { icon: CreditCard, title: 'Payments', desc: 'One payment infrastructure connecting physical and online commerce.' },
-  { icon: BarChart3, title: 'Intelligence', desc: 'Live sales, customer insights, attribution and continuous optimisation.' },
-]
-
-export function Platform() {
-  return (
-    <Slide>
-      <motion.div variants={riseIn}><Eyebrow>The platform</Eyebrow></motion.div>
-      <motion.h2 variants={riseIn} style={{ ...h2Style, fontSize: 76 }}>
-        The <GradientText>Connected Retail</GradientText> Platform
-      </motion.h2>
-
-      <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '1fr 420px 1fr', alignItems: 'center', columnGap: 56, marginTop: 20 }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 34 }}>
-          {PLATFORM.slice(0, 2).map((c) => <HubCard key={c.title} {...c} />)}
-        </div>
-
-        <motion.div variants={scaleIn} style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={halo(560, 0.3)} />
-          <div style={{ position: 'absolute', width: 340, height: 340, borderRadius: 999, border: `1px solid ${colors.border}` }} />
-          <div style={{ position: 'absolute', width: 452, height: 452, borderRadius: 999, border: `1px solid rgba(255,255,255,0.05)` }} />
-          <BrandSymbol style={{ height: 150, position: 'relative', filter: 'drop-shadow(0 0 50px rgba(24,62,246,.8))' }} />
-          <div style={{ position: 'relative', marginTop: 26, fontFamily: font.heading, fontWeight: 800, fontSize: 32, textAlign: 'center' }}>Bright.Blue<br />Platform</div>
-        </motion.div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 34 }}>
-          {PLATFORM.slice(2).map((c) => <HubCard key={c.title} {...c} />)}
-        </div>
-      </div>
-
-      <Closer muted="Every interaction is measurable." accent="Every interaction is monetisable." />
-      <Footer />
-    </Slide>
-  )
-}
-
-function HubCard({ icon, title, desc }: { icon: LucideIcon; title: string; desc: string }) {
-  return (
-    <motion.div variants={riseIn} style={{ ...cardBase, padding: 34, display: 'flex', gap: 26, alignItems: 'flex-start' }}>
-      <IconChip icon={icon} size={68} tone="gradient" />
-      <div>
-        <div style={{ fontFamily: font.heading, fontWeight: 800, fontSize: 30 }}>{title}</div>
-        <div style={{ color: colors.textMuted, fontSize: 21, marginTop: 8, lineHeight: 1.45 }}>{desc}</div>
-      </div>
-    </motion.div>
-  )
-}
-
-/* ════════════════════════════════════════════════════════════ 5 · Formats */
-
-const FORMATS = [
-  { name: 'Europa', src: '10.jpg', desc: 'Brand-wrapped connected units for events and high-footfall activations.' },
-  { name: 'Hyperion', src: 'hyperion.png', desc: 'Large-format connected retail for travel hubs and flagship locations.' },
-  { name: 'Blinx', src: '4.jpg', desc: 'Premium connected display for hotels, lounges and members\u2019 clubs.' },
-]
-
-export function Formats() {
-  return (
-    <Slide>
-      <motion.div variants={riseIn}><Eyebrow>Retail formats</Eyebrow></motion.div>
-      <motion.h2 variants={riseIn} style={{ ...h2Style, fontSize: 76 }}>
-        One platform. <GradientText>Three retail formats.</GradientText>
-      </motion.h2>
-
-      <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 40, alignContent: 'center', marginTop: 40 }}>
-        {FORMATS.map((f) => (
-          <motion.div key={f.name} variants={riseIn} style={{ ...cardBase, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-            <div style={{ aspectRatio: '16 / 10', overflow: 'hidden', background: colors.bgDeep }}>
-              <img src={f.src} alt={`${f.name} connected retail unit`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-            </div>
-            <div style={{ padding: '32px 34px 36px' }}>
-              <div style={{ fontFamily: font.heading, fontWeight: 800, fontSize: 40 }}>{f.name}</div>
-              <GradientRule width={54} height={5} style={{ marginTop: 16 }} />
-              <div style={{ color: colors.textMuted, fontSize: 21, marginTop: 20, lineHeight: 1.45 }}>{f.desc}</div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      <motion.p variants={riseIn} style={{ fontFamily: font.heading, fontWeight: 700, fontSize: 30, color: colors.textMuted, marginTop: 'auto', paddingTop: 44 }}>
-        Every model is powered by the same <span style={{ color: colors.text }}>Bright.Blue platform.</span>
-      </motion.p>
-      <Footer />
-    </Slide>
-  )
-}
-
-/* ═══════════════════════════════════════════════════════ 6 · Intelligence */
-
-type MetricRow = { k: string; v: string; up?: boolean; bar?: number; spark?: string }
-
-const PANELS: { title: string; rows: MetricRow[] }[] = [
-  {
-    title: 'Live Sales',
-    rows: [
-      { k: 'Sell-through', v: '84.2%', up: true, bar: 84 },
-      { k: 'SKU performance', v: '+18%', up: true, spark: 'M1 14 L20 12 L38 13 L56 8 L74 9 L92 4 L119 6' },
-      { k: 'Units sold', v: '12,418' },
-      { k: 'Basket value', v: '\u00a327.80' },
-      { k: 'Location sales', v: '\u00a3184k', up: true, spark: 'M1 12 L24 11 L48 13 L72 8 L96 7 L119 5' },
-    ],
-  },
-  {
-    title: 'Consumer Intelligence',
-    rows: [
-      { k: 'Age 25\u201334', v: '41%', bar: 41 },
-      { k: 'Female / Male', v: '58% / 42%' },
-      { k: 'Units per basket', v: '2.3' },
-      { k: 'Visit frequency', v: '2.4\u00d7 / wk' },
-      { k: 'Repeat purchase', v: '37%', up: true, bar: 37 },
-    ],
-  },
-  {
-    title: 'Media Performance',
-    rows: [
-      { k: 'Impressions', v: '1.28M', spark: 'M1 15 L18 13 L36 14 L54 9 L72 10 L90 5 L119 3' },
-      { k: 'Engagement rate', v: '6.8%', up: true, bar: 68 },
-      { k: 'Conversions', v: '24,106' },
-      { k: 'ROAS', v: '4.6\u00d7', up: true },
-      { k: 'CTR', v: '2.9%' },
-    ],
-  },
-  {
-    title: 'Commercial Intelligence',
-    rows: [
-      { k: 'Avg. selling price', v: '\u00a34.85' },
-      { k: 'Campaign revenue', v: '\u00a396.2k', up: true, spark: 'M1 13 L22 12 L44 10 L66 11 L88 6 L119 4' },
-      { k: 'Category growth', v: '+9.4%', up: true, bar: 62 },
-      { k: 'Gross margin', v: '34.1%' },
-    ],
-  },
-]
+/* ═══════════════════════════════════════════════════════════ Intelligence */
 
 export function Intelligence() {
   return (
     <Slide>
       <motion.div variants={riseIn}><Eyebrow>Live intelligence</Eyebrow></motion.div>
-      <motion.h2 variants={riseIn} style={{ ...h2Style, fontSize: 76 }}>
+      <motion.h2 variants={riseIn} style={{ ...h2Style, fontSize: 66, marginTop: 14 }}>
         Connected Retail <GradientText>Intelligence</GradientText>
       </motion.h2>
 
-      <motion.div variants={riseIn} style={{ ...cardBase, marginTop: 44, overflow: 'hidden' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 26, padding: '24px 34px', borderBottom: `1px solid ${colors.border}`, background: 'rgba(255,255,255,0.02)' }}>
-          <div style={{ fontFamily: font.heading, fontWeight: 800, fontSize: 26 }}>Bright.Blue Intelligence</div>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '7px 16px', borderRadius: 999, background: 'rgba(0,191,232,0.12)', border: `1px solid rgba(0,191,232,0.4)` }}>
-            <span style={{ width: 9, height: 9, borderRadius: 999, background: colors.cyan, boxShadow: `0 0 12px ${colors.cyan}` }} />
-            <span style={{ fontSize: 16, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: colors.cyan }}>Live</span>
-          </div>
-          <div style={{ marginLeft: 'auto', fontSize: 19, color: colors.textFaint }}>Updated just now &middot; UK Network</div>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 1, background: colors.border }}>
-          {PANELS.map((p) => (
-            <div key={p.title} style={{ background: colors.bg, padding: '28px 30px 30px' }}>
-              <div style={{ fontFamily: font.heading, fontWeight: 800, fontSize: 24, paddingBottom: 14, borderBottom: `2px solid ${colors.borderPrimary}`, marginBottom: 4 }}>{p.title}</div>
-              {p.rows.map((r) => <Metric key={r.k} row={r} />)}
-            </div>
-          ))}
-        </div>
-      </motion.div>
+      <div style={{ flex: 1, minHeight: 0, display: 'flex', marginTop: 26 }}>
+        <LiveDashboard />
+      </div>
 
       <Closer muted="Brands no longer wait weeks for reports." accent="They optimise while campaigns are still running." />
       <Footer />
@@ -415,28 +157,7 @@ export function Intelligence() {
   )
 }
 
-function Metric({ row }: { row: MetricRow }) {
-  return (
-    <div style={{ padding: '17px 0', borderBottom: `1px solid rgba(255,255,255,0.06)` }}>
-      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 14 }}>
-        <span style={{ fontSize: 20, color: colors.textMuted }}>{row.k}</span>
-        <span style={{ fontFamily: font.heading, fontWeight: 800, fontSize: 24, color: row.up ? colors.cyan : colors.text, whiteSpace: 'nowrap' }}>{row.v}</span>
-      </div>
-      {row.bar !== undefined && (
-        <div style={{ marginTop: 12, height: 5, borderRadius: 999, background: 'rgba(255,255,255,0.08)', overflow: 'hidden' }}>
-          <div style={{ width: `${row.bar}%`, height: '100%', borderRadius: 999, background: gradient.primary }} />
-        </div>
-      )}
-      {row.spark && (
-        <svg viewBox="0 0 120 18" preserveAspectRatio="none" style={{ width: '100%', height: 22, marginTop: 10, display: 'block' }} aria-hidden="true">
-          <path d={row.spark} fill="none" stroke={colors.cyan} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
-        </svg>
-      )}
-    </div>
-  )
-}
-
-/* ═══════════════════════════════════════════════════════════ 7 · Payments */
+/* ═══════════════════════════════════════════════════════════════ Payments */
 
 const CHANNELS = [
   { icon: MonitorSmartphone, label: 'Connected\nRetail Devices' },
@@ -514,7 +235,7 @@ export function Payments() {
   )
 }
 
-/* ═════════════════════════════════════════════════════ 8 · Revenue streams */
+/* ════════════════════════════════════════════════════════ Revenue streams */
 
 const STREAMS = [
   {
@@ -610,7 +331,7 @@ export function RevenueStreams() {
   )
 }
 
-/* ═══════════════════════════════════════════════════════════ 9 · Pod Foods */
+/* ══════════════════════════════════════════════════════════════ Pod Foods */
 
 const TODAY = [
   { icon: Tag, t: 'Sells through wholesale', s: 'One-off transactions' },
@@ -716,7 +437,7 @@ function PanelLead({ icon, title, sub, tone }: { icon: LucideIcon; title: string
   )
 }
 
-/* ═══════════════════════════════════════════════════════ 10 · Opportunity */
+/* ════════════════════════════════════════════════════════════ Opportunity */
 
 const OLD_WAY = [
   'Products are distributed.',
@@ -777,7 +498,7 @@ export function Opportunity() {
   )
 }
 
-/* ════════════════════════════════════════════════════════════ 11 · Close */
+/* ══════════════════════════════════════════════════════════════════ Close */
 
 export function Close() {
   return (

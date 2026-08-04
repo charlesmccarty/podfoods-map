@@ -80,10 +80,10 @@ export const coverVeil =
   'linear-gradient(0deg, rgba(5,5,25,0.6) 0%, rgba(5,5,25,0) 32%)'
 
 /** Photo or looping video bled to the slide edge, veiled so copy stays legible. */
-export function SideMedia({ src, side = 'right', position = 'center' }: { src: string; side?: 'left' | 'right'; position?: string }) {
-  const veil = side === 'right'
+export function SideMedia({ src, side = 'right', position = 'center', veil: veilOverride }: { src: string; side?: 'left' | 'right'; position?: string; veil?: string }) {
+  const veil = veilOverride ?? (side === 'right'
     ? `linear-gradient(90deg, ${colors.bg} 0%, rgba(5,5,25,0) 34%), linear-gradient(0deg, rgba(5,5,25,.5) 0%, rgba(5,5,25,0) 24%)`
-    : `linear-gradient(270deg, ${colors.bg} 0%, rgba(5,5,25,0) 34%), linear-gradient(0deg, rgba(5,5,25,.5) 0%, rgba(5,5,25,0) 24%)`
+    : `linear-gradient(270deg, ${colors.bg} 0%, rgba(5,5,25,0) 34%), linear-gradient(0deg, rgba(5,5,25,.5) 0%, rgba(5,5,25,0) 24%)`)
   return (
     <motion.div variants={fadeIn} style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${src})`, backgroundSize: 'cover', backgroundPosition: position }} />

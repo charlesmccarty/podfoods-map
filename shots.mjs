@@ -12,7 +12,7 @@ mkdirSync(outDir, { recursive: true })
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 const BASE = process.env.DECK_URL || 'http://localhost:5173/'
 const W = 1920, H = 1080
-const COUNT = Number(process.env.COUNT || 11)
+const COUNT = Number(process.env.COUNT || 14)
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const browser = await puppeteer.launch({
@@ -24,9 +24,18 @@ const page = await browser.newPage()
 await page.setViewport({ width: W, height: H, deviceScaleFactor: 1 })
 
 for (let i = 1; i <= COUNT; i++) {
-  await page.goto(`${BASE}?clean&slide=${i}`, { waitUntil: 'networkidle0' })
+  // `networkidle0` never settles on slides with a looping video, so wait on the
+  // things that actually affect the frame: fonts, then the first video frame.
+  await page.goto(`${BASE}?clean&slide=${i}`, { waitUntil: 'load' })
   try { await page.evaluate(() => document.fonts && document.fonts.ready) } catch {}
-  await sleep(700)
+  await page.evaluate(
+    () => Promise.all([...document.querySelectorAll('video')].map((v) =>
+      v.readyState >= 2 ? null : new Promise((r) => {
+        v.addEventListener('loadeddata', r, { once: true })
+        setTimeout(r, 8000)
+      }))),
+  )
+  await sleep(900)
   const f = join(outDir, `s${String(i).padStart(2, '0')}.png`)
   await page.screenshot({ path: f, type: 'png', clip: { x: 0, y: 0, width: W, height: H } })
   process.stdout.write(`captured ${i}/${COUNT}\n`)

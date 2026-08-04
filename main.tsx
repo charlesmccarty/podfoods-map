@@ -6,9 +6,11 @@ import { SlideStage } from './src/components/SlideStage'
 import { colors, font } from './src/theme'
 
 import {
-  Cover, Thesis, Journey, Platform, Formats, Intelligence,
+  Cover, Journey, Intelligence,
   Payments, RevenueStreams, PodFoods, Opportunity, Close,
 } from './slides'
+import { ConsumerShift, Fragmented, Imagine } from './opening'
+import { Europa, Hyperion, Blinx } from './machines'
 
 /**
  * Bright.Blue x Pod Foods — Building the Future of Connected Retail.
@@ -19,10 +21,13 @@ import {
  */
 const slides: ReactNode[] = [
   <Cover />,
-  <Thesis />,
+  <ConsumerShift />,
+  <Fragmented />,
+  <Imagine />,
   <Journey />,
-  <Platform />,
-  <Formats />,
+  <Europa />,
+  <Hyperion />,
+  <Blinx />,
   <Intelligence />,
   <Payments />,
   <RevenueStreams />,
