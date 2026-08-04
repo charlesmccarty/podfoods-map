@@ -1,0 +1,53 @@
+:root {
+  --bg: #050519;
+  --bg-deep: #03030f;
+  --primary: #183ef6;
+  --cyan: #00bfe8;
+  --text: #ffffff;
+
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--bg-deep);
+  color: var(--text);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-weight: 800;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+::selection {
+  background: rgba(24, 62, 246, 0.55);
+  color: #fff;
+}
