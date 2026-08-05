@@ -76,12 +76,11 @@ const MACHINES: Machine[] = [
     name: 'Callisto',
     points: ['Frozen product on demand', 'Ice cream and dessert brands', 'Airports, stations and campuses'],
     columns: '1.15fr 1fr',
-    rows: '1fr 1fr 1fr',
+    rows: '1fr 1fr',
     tiles: [
       { src: 'Callisto/Bright-Blue_Callisto_Magnum_Airport_Render_01.jpg', caption: 'Magnum \u00b7 airport', area: '1 / 1 / 2 / 2' },
-      { src: 'Callisto/Bright-Blue_Callisto_Haagen-Dazs_Airport_Render.jpg', caption: 'H\u00e4agen-Dazs \u00b7 airport', area: '2 / 1 / 3 / 2' },
-      { src: 'Callisto/Bright-Blue_Callisto_Nuii_Train-Station_Render.jpg', caption: 'Nuii \u00b7 train station', area: '3 / 1 / 4 / 2' },
-      { src: 'Callisto/Bright-Blue_Callisto_Cornetto_University_Render.jpg', caption: 'Cornetto \u00b7 university', area: '1 / 2 / 4 / 3' },
+      { src: 'Callisto/Bright-Blue_Callisto_Nuii_Train-Station_Render.jpg', caption: 'Nuii \u00b7 train station', area: '2 / 1 / 3 / 2' },
+      { src: 'Callisto/Bright-Blue_Callisto_Cornetto_University_Render.jpg', caption: 'Cornetto \u00b7 university', area: '1 / 2 / 3 / 3' },
     ],
   },
 ]
