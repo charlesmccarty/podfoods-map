@@ -12,7 +12,7 @@ mkdirSync(outDir, { recursive: true })
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 const BASE = process.env.DECK_URL || 'http://localhost:5173/'
 const W = 1920, H = 1080
-const COUNT = Number(process.env.COUNT || 14)
+const COUNT = Number(process.env.COUNT || 20)
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const browser = await puppeteer.launch({

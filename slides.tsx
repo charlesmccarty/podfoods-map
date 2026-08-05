@@ -1,11 +1,10 @@
-import type { CSSProperties, ReactNode } from 'react'
+import type { CSSProperties } from 'react'
 import { motion } from 'framer-motion'
-import type { LucideIcon } from 'lucide-react'
 import {
-  Tag, Store, Users, Factory, Truck, ShoppingCart, Megaphone, UserPlus,
-  Database, RefreshCw, Heart, BarChart3, ShieldCheck, Zap, Banknote,
-  FileCheck2, MonitorSmartphone, PackageCheck, MoreHorizontal, Warehouse, Target,
-  TrendingUp, LineChart, PoundSterling, Check, X, ShoppingBag, SlidersHorizontal,
+  Store, Users, Factory, Truck, ShoppingCart, Megaphone, UserPlus,
+  Database, RefreshCw, Heart, ShieldCheck, Zap, Banknote,
+  FileCheck2, MonitorSmartphone, PackageCheck, MoreHorizontal, Target,
+  TrendingUp, LineChart, ShoppingBag, SlidersHorizontal,
   Gauge,
 } from 'lucide-react'
 import { Slide } from './src/components/Slide'
@@ -41,7 +40,7 @@ export function Cover() {
       <motion.div variants={fadeIn} style={{ position: 'absolute', top: 90, left: 140, zIndex: 4 }}><BrandLogo /></motion.div>
 
       <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '100%', maxWidth: 1180 }}>
-        <motion.div variants={riseIn}><Eyebrow>Bright.Blue &times; Pod Foods</Eyebrow></motion.div>
+        <motion.div variants={riseIn}><Eyebrow>Pod Foods &times; Bright.Blue &times; Miami Factory &times; Akiva</Eyebrow></motion.div>
         <motion.h1 variants={riseIn} style={{ fontFamily: font.heading, fontWeight: 800, fontSize: 116, lineHeight: 1.02, letterSpacing: -2.5, margin: '28px 0 0' }}>
           Building the Future of<br /><GradientText>Connected Retail</GradientText>
         </motion.h1>
@@ -326,173 +325,6 @@ export function RevenueStreams() {
         <span style={{ width: 8, height: 8, borderRadius: 999, background: colors.cyan }} />
         <span style={{ fontFamily: font.heading, fontWeight: 700, fontSize: 27, color: colors.textMuted }}>Stronger brands.</span>
       </motion.div>
-      <Footer />
-    </Slide>
-  )
-}
-
-/* ══════════════════════════════════════════════════════════════ Pod Foods */
-
-const TODAY = [
-  { icon: Tag, t: 'Sells through wholesale', s: 'One-off transactions' },
-  { icon: BarChart3, t: 'Limited brand insight', s: 'Little to no customer data' },
-  { icon: Target, t: 'Hard to measure impact', s: 'No closed-loop attribution' },
-  { icon: Users, t: 'No ongoing relationship', s: 'Ends at the point of sale' },
-]
-
-const TOMORROW = [
-  { icon: ShoppingCart, t: 'Premium retail distribution', s: 'More placements. More doors.' },
-  { icon: Target, t: 'Closed-loop attribution', s: 'Know what works. Prove impact.' },
-  { icon: Users, t: 'First-party customer relationships', s: 'Own the relationship. Drive loyalty.' },
-  { icon: LineChart, t: 'Real-time customer intelligence', s: 'Understand behaviour as it happens.' },
-  { icon: RefreshCw, t: 'Continuous optimisation', s: 'Improve assortment, pricing & media.' },
-  { icon: PoundSterling, t: 'New recurring revenue', s: 'Beyond wholesale margins.' },
-]
-
-export function PodFoods() {
-  return (
-    <Slide>
-      <motion.div variants={riseIn}><Eyebrow>Why it matters</Eyebrow></motion.div>
-      <motion.h2 variants={riseIn} style={{ ...h2Style, fontSize: 76 }}>
-        Why this matters for <GradientText>Pod Foods.</GradientText>
-      </motion.h2>
-
-      <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '1fr 300px 1.08fr', alignItems: 'center', marginTop: 24 }}>
-        {/* Today */}
-        <motion.div variants={riseIn} style={{ ...cardBase, padding: '30px 30px 24px', position: 'relative' }}>
-          <Badge>Today</Badge>
-          <PanelLead icon={Warehouse} title="Distributor" sub="Moves products." tone="muted" />
-          {TODAY.map((r) => (
-            <div key={r.t} style={{ display: 'flex', alignItems: 'center', gap: 20, padding: '17px 0', borderTop: `1px solid ${colors.border}` }}>
-              <IconChip icon={r.icon} size={50} />
-              <div style={{ flex: 1 }}>
-                <div style={{ fontFamily: font.heading, fontWeight: 800, fontSize: 23, color: colors.textMuted }}>{r.t}</div>
-                <div style={{ fontSize: 19, color: colors.textFaint, marginTop: 2 }}>{r.s}</div>
-              </div>
-              <span style={{ width: 30, height: 30, borderRadius: 999, background: 'rgba(255,255,255,0.06)', border: `1px solid ${colors.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: colors.textFaint }}>
-                <X size={16} strokeWidth={2.6} />
-              </span>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Hub */}
-        <motion.div variants={scaleIn} style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={halo(430, 0.34)} />
-          <BrandSymbol style={{ height: 120, position: 'relative', filter: 'drop-shadow(0 0 44px rgba(24,62,246,.8))' }} />
-          <div style={{ position: 'relative', marginTop: 22, textAlign: 'center' }}>
-            <BrandLogo style={{ height: 34, margin: '0 auto' }} />
-            <div style={{ marginTop: 12, fontSize: 16, fontWeight: 700, letterSpacing: 2.6, textTransform: 'uppercase', color: colors.cyan }}>Connected Retail</div>
-          </div>
-        </motion.div>
-
-        {/* Tomorrow */}
-        <motion.div variants={riseIn} style={{ ...cardBase, background: colors.surfaceInverse, border: `1px solid ${colors.borderPrimary}`, padding: '30px 30px 24px', position: 'relative' }}>
-          <Badge tone="gradient">Tomorrow</Badge>
-          <PanelLead icon={TrendingUp} title="Connected Platform" sub="Creates ongoing value." tone="bright" />
-          {TOMORROW.map((r) => (
-            <div key={r.t} style={{ display: 'flex', alignItems: 'center', gap: 20, padding: '14px 0', borderTop: `1px solid rgba(255,255,255,0.08)` }}>
-              <span style={{ width: 26, height: 26, borderRadius: 999, background: gradient.primary, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <Check size={15} strokeWidth={3} />
-              </span>
-              <div>
-                <div style={{ fontFamily: font.heading, fontWeight: 800, fontSize: 23 }}>{r.t}</div>
-                <div style={{ fontSize: 19, color: colors.textMuted, marginTop: 2 }}>{r.s}</div>
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-      <Footer />
-    </Slide>
-  )
-}
-
-function Badge({ children, tone = 'muted' }: { children: ReactNode; tone?: 'muted' | 'gradient' }) {
-  return (
-    <span
-      style={{
-        position: 'absolute', top: -16, left: '50%', transform: 'translateX(-50%)',
-        padding: '7px 20px', borderRadius: 999, whiteSpace: 'nowrap',
-        fontSize: 15, fontWeight: 800, letterSpacing: 2.6, textTransform: 'uppercase',
-        ...(tone === 'gradient'
-          ? { background: gradient.primary, color: '#fff' }
-          : { background: '#12122b', border: `1px solid ${colors.border}`, color: colors.textFaint }),
-      }}
-    >
-      {children}
-    </span>
-  )
-}
-
-function PanelLead({ icon, title, sub, tone }: { icon: LucideIcon; title: string; sub: string; tone: 'muted' | 'bright' }) {
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 20, paddingBottom: 20 }}>
-      <IconChip icon={icon} size={58} tone={tone === 'bright' ? 'gradient' : 'surface'} />
-      <div>
-        <div style={{ fontFamily: font.heading, fontWeight: 800, fontSize: 30, color: tone === 'bright' ? colors.text : colors.textMuted }}>{title}</div>
-        <div style={{ fontSize: 20, color: colors.textFaint, marginTop: 2 }}>{sub}</div>
-      </div>
-    </div>
-  )
-}
-
-/* ════════════════════════════════════════════════════════════ Opportunity */
-
-const OLD_WAY = [
-  'Products are distributed.',
-  'Sales are reported weeks later.',
-  'The retailer owns the customer relationship.',
-]
-const NEW_WAY = [
-  'Products are distributed.',
-  'Consumers engage directly with brands.',
-  'Every interaction is measured.',
-  'Every transaction is attributed.',
-  'Every campaign is optimised in real time.',
-  'Brands own the relationship.',
-]
-
-export function Opportunity() {
-  return (
-    <Slide>
-      <motion.div variants={riseIn}><Eyebrow>The opportunity</Eyebrow></motion.div>
-      <motion.h2 variants={riseIn} style={{ ...h2Style, fontSize: 76 }}>
-        The <GradientText>opportunity.</GradientText>
-      </motion.h2>
-
-      <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 44, alignItems: 'stretch', marginTop: 40, paddingBottom: 20 }}>
-        <motion.div variants={riseIn} style={{ ...cardBase, padding: '48px 52px', display: 'flex', flexDirection: 'column' }}>
-          <div style={{ fontFamily: font.heading, fontWeight: 800, fontSize: 44, color: colors.textMuted }}>Traditional Retail</div>
-          <div style={{ width: 54, height: 4, borderRadius: 999, background: colors.borderStrong, margin: '20px 0 34px' }} />
-          <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 24 }}>
-            {OLD_WAY.map((t) => (
-              <li key={t} style={{ display: 'flex', gap: 20, alignItems: 'flex-start', fontSize: 28, color: colors.textFaint, lineHeight: 1.4 }}>
-                <span style={{ width: 9, height: 9, borderRadius: 2.5, background: colors.textFaint, marginTop: 14, flexShrink: 0 }} />
-                {t}
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-
-        <motion.div
-          variants={riseIn}
-          style={{ borderRadius: radius.lg, padding: '48px 52px', display: 'flex', flexDirection: 'column', background: gradient.primary, boxShadow: '0 40px 90px -40px rgba(24,62,246,0.9)' }}
-        >
-          <div style={{ fontFamily: font.heading, fontWeight: 800, fontSize: 44 }}>Connected Retail</div>
-          <div style={{ width: 54, height: 4, borderRadius: 999, background: 'rgba(255,255,255,0.7)', margin: '20px 0 34px' }} />
-          <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 20 }}>
-            {NEW_WAY.map((t) => (
-              <li key={t} style={{ display: 'flex', gap: 20, alignItems: 'flex-start', fontSize: 28, color: '#fff', lineHeight: 1.4 }}>
-                <span style={{ width: 26, height: 26, borderRadius: 999, background: 'rgba(255,255,255,0.22)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 7, flexShrink: 0 }}>
-                  <Check size={15} strokeWidth={3} />
-                </span>
-                {t}
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-      </div>
       <Footer />
     </Slide>
   )

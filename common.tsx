@@ -92,6 +92,17 @@ export function SideMedia({ src, side = 'right', position = 'center', veil: veil
   )
 }
 
+export const heroCopyLeft: CSSProperties = {
+  position: 'absolute', top: 0, bottom: 0, left: 0, width: '50%', zIndex: 2,
+  display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 30px 0 110px',
+}
+
+export const heroCopyRight: CSSProperties = {
+  position: 'absolute', top: 0, bottom: 0, right: 0, width: '50%', zIndex: 2,
+  display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'stretch',
+  padding: '0 140px 0 30px', boxSizing: 'border-box',
+}
+
 export const splitWrap: CSSProperties = { position: 'absolute', inset: 0, display: 'flex' }
 export const splitCopy: CSSProperties = { display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '96px 56px 96px 140px', zIndex: 3, minWidth: 0 }
 export const h2Style: CSSProperties = { fontFamily: font.heading, fontWeight: 800, fontSize: 72, lineHeight: 1.05, letterSpacing: -1.5, margin: '20px 0 0' }

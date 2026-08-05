@@ -37,14 +37,14 @@ const MACHINES: Machine[] = [
   {
     index: 1,
     name: 'Europa',
-    points: ['Full-height digital display', 'Campaign creative on the door', 'Gyms, offices, events and forecourts'],
+    points: ['Full-height digital display', 'Wrapped to any brand, any shape', 'Gyms, events, high street and retail'],
     columns: '1fr 1fr',
     rows: '1fr 1fr',
     tiles: [
-      { src: 'Europa/Bright-Blue_Red-Bull_Campaign_The-Gym-Group_Photo_02.jpg', caption: 'Red Bull \u00d7 The Gym Group', area: '1 / 1 / 2 / 2' },
-      { src: 'Europa/Bright-Blue_The-Gym-Group_Connected-Retail_Photo_12.jpg', caption: 'The Gym Group', area: '1 / 2 / 2 / 3' },
-      { src: 'Europa/Bright-Blue_ASDA_Campaigns_Photo_02.jpg', caption: 'ASDA campaign', area: '2 / 1 / 3 / 2' },
-      { src: 'Europa/Bright-Blue_Events_Europa_Adyen_Experience-London_Photo_04.jpg', caption: 'Adyen Experience, London', area: '2 / 2 / 3 / 3' },
+      { src: 'Europa/Bright-Blue_Events_Europa_Costa_Coffee-Catch-a-Matcha_Photo_01 (1).jpg', caption: 'Costa \u00b7 Catch a Matcha', area: '1 / 1 / 2 / 2' },
+      { src: 'Europa/Bright-Blue_MADFest_Photo_14b (2).jpg', caption: 'Pepsi \u00b7 MADFest', area: '1 / 2 / 2 / 3' },
+      { src: 'Europa/Bright-Blue_Europa_Huel-Activation_Render_01 (1).jpg', caption: 'Huel \u00b7 activation', area: '2 / 1 / 3 / 2' },
+      { src: 'Europa/Bright-Blue_Snap-Fitness_Virgin-Media_Photo_01 (3).jpg', caption: 'Virgin Media', area: '2 / 2 / 3 / 3' },
     ],
   },
   {
@@ -55,8 +55,8 @@ const MACHINES: Machine[] = [
     rows: '1.25fr 1fr',
     tiles: [
       { src: 'Hyperion/Bright-Blue_Events_Hyperion_NADairX_London-Longevity_Video.mp4', kind: 'video', caption: 'NAD airX \u00b7 The Longevity Show', area: '1 / 1 / 2 / 3', start: 6 },
-      { src: 'hyperion.png', caption: 'Superdrug \u00b7 airport', area: '2 / 1 / 3 / 2' },
-      { src: 'Hyperion/Bright-Blue_Hyperion_Stansted-Airport_Tech_Render.jpg', caption: 'Stansted Airport', area: '2 / 2 / 3 / 3' },
+      { src: 'Hyperion/Bright-Blue_Hyperion_Coca-Cola_Airport_Photo_01.png', caption: 'Coca-Cola \u00b7 airport', area: '2 / 1 / 3 / 2' },
+      { src: 'Hyperion/Bright-Blue_Hyperion_Anker_Airport_Photo_01.png', caption: 'Anker \u00b7 Power Your Journey', area: '2 / 2 / 3 / 3' },
     ],
   },
   {
@@ -69,6 +69,19 @@ const MACHINES: Machine[] = [
       { src: 'Blinx/Bright-Blue_Blinx_Suntory_Whisky_Photo_02.jpg', caption: 'Suntory \u00b7 whisky', area: '1 / 1 / 2 / 3' },
       { src: 'Blinx/Bright-Blue_Blinx_Porsche_Photo_01.jpg', caption: 'Porsche Design', area: '2 / 1 / 3 / 2' },
       { src: 'Blinx/Bright-Blue_Blinx_Suntory_Whisky_Photo_01.jpg', caption: 'Hibiki \u00b7 interactive screen', area: '2 / 2 / 3 / 3', position: 'left center' },
+    ],
+  },
+  {
+    index: 4,
+    name: 'Callisto',
+    points: ['Frozen product on demand', 'Ice cream and dessert brands', 'Airports, stations and campuses'],
+    columns: '1.15fr 1fr',
+    rows: '1fr 1fr 1fr',
+    tiles: [
+      { src: 'Callisto/Bright-Blue_Callisto_Magnum_Airport_Render_01.jpg', caption: 'Magnum \u00b7 airport', area: '1 / 1 / 2 / 2' },
+      { src: 'Callisto/Bright-Blue_Callisto_Haagen-Dazs_Airport_Render.jpg', caption: 'H\u00e4agen-Dazs \u00b7 airport', area: '2 / 1 / 3 / 2' },
+      { src: 'Callisto/Bright-Blue_Callisto_Nuii_Train-Station_Render.jpg', caption: 'Nuii \u00b7 train station', area: '3 / 1 / 4 / 2' },
+      { src: 'Callisto/Bright-Blue_Callisto_Cornetto_University_Render.jpg', caption: 'Cornetto \u00b7 university', area: '1 / 2 / 4 / 3' },
     ],
   },
 ]
@@ -114,7 +127,7 @@ function Copy({ m }: { m: Machine }) {
   return (
     <>
       <motion.div variants={riseIn}>
-        <Eyebrow>Retail format {String(m.index).padStart(2, '0')} / 03</Eyebrow>
+        <Eyebrow>Retail format {String(m.index).padStart(2, '0')} / {String(MACHINES.length).padStart(2, '0')}</Eyebrow>
       </motion.div>
       <motion.h2 variants={riseIn} style={{ fontFamily: font.heading, fontWeight: 800, fontSize: 104, lineHeight: 1, letterSpacing: -2.4, margin: '22px 0 0' }}>
         <GradientText>{m.name}</GradientText>
@@ -152,3 +165,4 @@ function MachineSlide({ m }: { m: Machine }) {
 export const Europa = () => <MachineSlide m={MACHINES[0]} />
 export const Hyperion = () => <MachineSlide m={MACHINES[1]} />
 export const Blinx = () => <MachineSlide m={MACHINES[2]} />
+export const Callisto = () => <MachineSlide m={MACHINES[3]} />

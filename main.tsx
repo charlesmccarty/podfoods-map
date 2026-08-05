@@ -7,10 +7,13 @@ import { colors, font } from './src/theme'
 
 import {
   Cover, Journey, Intelligence,
-  Payments, RevenueStreams, PodFoods, Opportunity, Close,
+  Payments, RevenueStreams, Close,
 } from './slides'
-import { ConsumerShift, Fragmented, Imagine } from './opening'
-import { Europa, Hyperion, Blinx } from './machines'
+import {
+  ConsumerShift, Fragmented, Imagine, Anywhere, MediaConverts, RealTime,
+  BrightBlue, IntegratedPlatform, PlanBookReport, OpportunityForBrands,
+} from './opening'
+import { Europa, Hyperion, Blinx, Callisto } from './machines'
 
 /**
  * Bright.Blue x Pod Foods — Building the Future of Connected Retail.
@@ -24,15 +27,21 @@ const slides: ReactNode[] = [
   <ConsumerShift />,
   <Fragmented />,
   <Imagine />,
+  <Anywhere />,
+  <MediaConverts />,
+  <RealTime />,
   <Journey />,
+  <BrightBlue />,
+  <IntegratedPlatform />,
   <Europa />,
   <Hyperion />,
   <Blinx />,
+  <Callisto />,
+  <PlanBookReport />,
   <Intelligence />,
   <Payments />,
   <RevenueStreams />,
-  <PodFoods />,
-  <Opportunity />,
+  <OpportunityForBrands />,
   <Close />,
 ]
 
