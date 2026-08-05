@@ -235,8 +235,6 @@ const VENUES = [
 ]
 
 const DEPLOYMENTS = [
-  { src: 'Europa/Bright-Blue_Red-Bull_Campaign_The-Gym-Group_Photo_02.jpg', position: 'center 45%' },
-  { src: 'hyperion.png', position: 'center 40%' },
   { src: 'Blinx/Bright-Blue_Blinx_Suntory_Whisky_Photo_02.jpg', position: 'center 45%' },
   { src: 'Europa/Bright-Blue_Events_Europa_Adyen_Experience-London_Photo_04.jpg', position: 'center 40%' },
   { src: 'Blinx/Bright-Blue_Blinx_Porsche_Photo_01.jpg', position: 'center 45%' },
